@@ -6,7 +6,7 @@
  * http://www.opensource.org/licenses/mit-license
  */
 // mjs
-import { Point as Point$1, utils, Container, BLEND_MODES as BLEND_MODES$1, Graphics, Rectangle as Rectangle$1, Text, TextStyle, Sprite as Sprite$1, Texture as Texture$1, BaseTexture as BaseTexture$1, Ticker as Ticker$2, extras } from 'pixi.js';
+import { Point as Point$1, utils, Container, BLEND_MODES as BLEND_MODES$1, Graphics, Rectangle as Rectangle$1, Text, TextStyle, Sprite as Sprite$1, Texture as Texture$1, BaseTexture as BaseTexture$1, Ticker as Ticker$2 } from 'pixi.js';
 import { DropShadowFilter } from '@pixi/filter-drop-shadow';
 
 /*!
@@ -20977,7 +20977,7 @@ class SliceSprite extends Widget {
         const { t, ff, fl, fr, ft, fb } = this;
         // make sprites
         this.sf = this.tile
-            ? new extras.TilingSprite(new Texture$1(t, ff))
+            ? new TilingSprite(new Texture$1(t, ff))
             : new Sprite$1(new Texture$1(t, ff));
         this.contentContainer.addChildAt(this.sf, 0);
         if (this.vs && this.hs) {
@@ -20992,20 +20992,20 @@ class SliceSprite extends Widget {
         }
         if (hs) {
             this.sl = this.tile
-                ? new extras.TilingSprite(new Texture$1(t, fl))
+                ? new TilingSprite(new Texture$1(t, fl))
                 : new Sprite$1(new Texture$1(t, fl));
             this.sr = this.tile
-                ? new extras.TilingSprite(new Texture$1(t, fr))
+                ? new TilingSprite(new Texture$1(t, fr))
                 : new Sprite$1(new Texture$1(t, fr));
             this.contentContainer.addChildAt(this.sl, 0);
             this.contentContainer.addChildAt(this.sr, 0);
         }
         if (this.vs) {
             this.st = this.tile
-                ? new extras.TilingSprite(new Texture$1(t, ft))
+                ? new TilingSprite(new Texture$1(t, ft))
                 : new Sprite$1(new Texture$1(t, ft));
             this.sb = this.tile
-                ? new extras.TilingSprite(new Texture$1(t, fb))
+                ? new TilingSprite(new Texture$1(t, fb))
                 : new Sprite$1(new Texture$1(t, fb));
             this.contentContainer.addChildAt(this.st, 0);
             this.contentContainer.addChildAt(this.sb, 0);
@@ -22424,7 +22424,7 @@ class TextInput extends FocusableWidget {
  */
 class TilingSprite extends Widget {
     constructor(t, width, height) {
-        const sprite = new extras.TilingSprite(t);
+        const sprite = new TilingSprite(t);
         super(width || sprite.width, height || sprite.height);
         this.sprite = sprite;
         this.contentContainer.addChild(this.sprite);
